@@ -17,6 +17,10 @@ public class customer {
 		this.sex = sex;
 	}
 
+	public customer(int cusno) {
+		this.cusno = cusno;
+	}
+
 	public int getCusno() {
 		return cusno;
 	}

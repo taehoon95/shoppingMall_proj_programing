@@ -6,10 +6,27 @@ public class sale {
 	private customer cusno;
 	private product procode;
 	private int saleamount;
+	private int sales;
+	
 
-	public sale(int orderno, String date, customer cusno, product procode, int saleamount) {
-		this.orderno = orderno;
+	public int getSales() {
+		return (int)(procode.getProprice()*saleamount*1.1);
+	}
+
+	public void setSales(int sales) {
+		this.sales = sales;
+	}
+
+	public sale(String date, customer cusno, product procode, int saleamount) {
 		this.date = date;
+		this.cusno = cusno;
+		this.procode = procode;
+		this.saleamount = saleamount;
+	}
+
+	public sale(String date, int orderno, customer cusno, product procode, int saleamount) {
+		this.date = date;
+		this.orderno = orderno;
 		this.cusno = cusno;
 		this.procode = procode;
 		this.saleamount = saleamount;

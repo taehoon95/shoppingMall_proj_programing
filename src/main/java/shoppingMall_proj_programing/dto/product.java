@@ -15,6 +15,10 @@ public class product {
 		this.stock = stock;
 	}
 
+	public product(String procode) {
+		this.procode = procode;
+	}
+
 	public String getProcode() {
 		return procode;
 	}
