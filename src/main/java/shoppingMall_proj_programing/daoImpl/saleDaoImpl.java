@@ -23,15 +23,30 @@ public class saleDaoImpl implements saleDao {
 		return instance;
 	}
 	
+
 	private sale getSale(ResultSet rs) throws SQLException {
-		String date = rs.getString("date"); 
+		int profit = 0;
+		String date = rs.getString("date");
+		
 		customer cusno = new customer(rs.getInt("cusno"));
-		cusno.setCusname(rs.getString("cusname"));
-		cusno.setCallno(rs.getString("callno"));
+		
+		try{
+			cusno.setCusname(rs.getString("cusName"));	
+		}catch (SQLException e) {}
+		try{
+			cusno.setCallno(rs.getString("callno"));
+		}catch (SQLException e) {}
 		product procode = new product(rs.getString("procode"));
+		try {
+			procode.setProname(rs.getString("proName"));
+			procode.setProprice(rs.getInt("proPrice"));
+		}catch (SQLException e) {}
 		int saleamount = rs.getInt("saleamount");
 		int sales = rs.getInt("sales");
-		return new sale(date, cusno, procode, saleamount);
+		try {
+			profit = rs.getInt("profit");
+		}catch (SQLException e) {}
+		return new sale(date, cusno, procode, saleamount, sales, profit);
 	}
 	
 	@Override
@@ -56,11 +71,39 @@ public class saleDaoImpl implements saleDao {
 
 	@Override
 	public List<sale> selectProduct() {
+		String sql = "select cusNo,date,procode,proName,saleamount,proprice,sales,profit from vw_product;";
+		try(Connection con = JdbcUtil.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()){
+			if(rs.next()) {
+				ArrayList<sale> list = new ArrayList<sale>();
+				do {
+					list.add(getSale(rs));
+				}while(rs.next());
+				return list;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
-	public List<sale> detailInfo() {
+	public List<sale> selectDetailInfo() {
+		String sql = "select `date`,procode,proName,cusName,saleamount,proPrice,sales,profit,cusno from vw_detail";
+		try(Connection con = JdbcUtil.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()){
+			if(rs.next()) {
+				ArrayList<sale> arrList = new ArrayList<sale>();
+				do {
+					arrList.add(getSale(rs));
+				}while(rs.next());
+				return arrList;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

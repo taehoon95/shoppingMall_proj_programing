@@ -1,15 +1,18 @@
 package shoppingMall_proj_programing.dao;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
 import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Assert;
 import org.junit.Test;
+
+import shoppingMall_proj_programing.daoImpl.saleDaoImpl;
+import shoppingMall_proj_programing.dto.sale;
 
 public class saleDaoTest {
 
-
+	private saleDao dao = saleDaoImpl.getInstance(); 
+	
 	@After
 	public void tearDown() throws Exception {
 		System.out.println();
@@ -17,17 +20,29 @@ public class saleDaoTest {
 
 	@Test
 	public void testSelectMain() {
-		fail("Not yet implemented");
+		List<sale> list = dao.selectMain();
+		Assert.assertNotNull(list);
+		for(sale a : list) {
+			System.out.println(a);
+		}
 	}
 
 	@Test
 	public void testSelectProduct() {
-		fail("Not yet implemented");
+		List<sale> list = dao.selectProduct();
+		Assert.assertNotNull(list);
+		for(sale s : list) {
+			System.out.println(s.toString2());
+		}
 	}
 
 	@Test
 	public void testDetailInfo() {
-		fail("Not yet implemented");
+		List<sale> list = dao.selectDetailInfo();
+		Assert.assertNotNull(list);
+		for(sale s : list) {
+			System.out.println(s.toString3());
+		}
 	}
 
 }

@@ -7,21 +7,19 @@ public class sale {
 	private product procode;
 	private int saleamount;
 	private int sales;
+	private int profit;
+
+	
 	
 
-	public int getSales() {
-		return (int)(procode.getProprice()*saleamount*1.1);
-	}
 
-	public void setSales(int sales) {
-		this.sales = sales;
-	}
-
-	public sale(String date, customer cusno, product procode, int saleamount) {
+	public sale(String date, customer cusno, product procode, int saleamount, int sales, int profit) {
 		this.date = date;
 		this.cusno = cusno;
 		this.procode = procode;
 		this.saleamount = saleamount;
+		this.sales = sales;
+		this.profit = profit;
 	}
 
 	public sale(String date, int orderno, customer cusno, product procode, int saleamount) {
@@ -32,7 +30,24 @@ public class sale {
 		this.saleamount = saleamount;
 	}
 
-	public sale() {}
+	public sale() {
+	}
+
+	public int getProfit() {
+		return profit;
+	}
+
+	public void setProfit(int profit) {
+		this.profit = profit;
+	}
+
+	public int getSales() {
+		return (int) ((procode.getProprice() * 1.1) * saleamount);
+	}
+
+	public void setSales(int sales) {
+		this.sales = sales;
+	}
 
 	public int getOrderno() {
 		return orderno;
@@ -76,8 +91,17 @@ public class sale {
 
 	@Override
 	public String toString() {
-		return String.format("sale [orderno=%s, date=%s, cusno=%s, procode=%s, saleamount=%s]", orderno, date, cusno,
-				procode, saleamount);
+		return String.format("%s %s %s %s %s %s %s", date, cusno.getCusno(), cusno.getCusname(), cusno.getCallno(),
+				procode.getProcode(), saleamount, sales);
 	}
 
+	public String toString2() {
+		return String.format("%4s %4s %4s %4s %4s %5s %5s", cusno.getCusno(), date, procode.getProcode(),
+				procode.getProname(), saleamount, procode.getProprice(), sales, profit);
+	}
+
+	public String toString3() {
+		return String.format("%4s %4s %4s %4s %4s %5s %5s %s", date, procode.getProcode(), procode.getProname(),
+				cusno.getCusname(), saleamount, procode.getProprice(), sales, profit);
+	}
 }
