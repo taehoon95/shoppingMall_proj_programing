@@ -42,7 +42,7 @@ public class sale {
 	}
 
 	public int getSales() {
-		return (int) ((procode.getProprice() * 1.1) * saleamount);
+		return sales;
 	}
 
 	public void setSales(int sales) {
@@ -90,17 +90,17 @@ public class sale {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() {// main
 		return String.format("%s %s %s %s %s %s %s", date, cusno.getCusno(), cusno.getCusname(), cusno.getCallno(),
 				procode.getProcode(), saleamount, sales);
 	}
 
-	public String toString2() {
+	public String toString2() {// product
 		return String.format("%4s %4s %4s %4s %4s %5s %5s", cusno.getCusno(), date, procode.getProcode(),
 				procode.getProname(), saleamount, procode.getProprice(), sales, profit);
 	}
 
-	public String toString3() {
+	public String toString3() {// detail
 		return String.format("%4s %4s %4s %4s %4s %5s %5s %s", date, procode.getProcode(), procode.getProname(),
 				cusno.getCusname(), saleamount, procode.getProprice(), sales, profit);
 	}

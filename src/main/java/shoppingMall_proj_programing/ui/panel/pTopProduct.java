@@ -1,20 +1,22 @@
 package shoppingMall_proj_programing.ui.panel;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.Font;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
 
-public class pTopProduct extends JPanel {
-	private JTextField textField;
+public class pTopProduct extends JPanel implements ActionListener {
+	private JTextField tfSelect;
+	private JButton btnNewButton;
 
 	public pTopProduct() {
 		setBackground(Color.ORANGE);
@@ -31,7 +33,7 @@ public class pTopProduct extends JPanel {
 		pLeft.add(pLeftTop);
 		pLeftTop.setLayout(new GridLayout(1, 0, 40, 20));
 		
-		JLabel lblTitleProduct = new JLabel("\uC81C\uD488\uBCC4 \uC870\uD68C");
+		JLabel lblTitleProduct = new JLabel("제품별 조회");
 		lblTitleProduct.setFont(new Font("굴림", Font.BOLD, 22));
 		lblTitleProduct.setBackground(Color.ORANGE);
 		pLeftTop.add(lblTitleProduct);
@@ -42,18 +44,19 @@ public class pTopProduct extends JPanel {
 		pLeft.add(pLeftBottom);
 		pLeftBottom.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		JLabel lblNewLabel = new JLabel("\uAC80\uC0C9\uC870\uAC74");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 20));
-		pLeftBottom.add(lblNewLabel);
+		JLabel lblProInfo = new JLabel("검색조건");
+		lblProInfo.setFont(new Font("굴림", Font.BOLD, 20));
+		pLeftBottom.add(lblProInfo);
 		
-		JComboBox cbbWeather = new JComboBox();
-		pLeftBottom.add(cbbWeather);
+		JComboBox cbbProInfo = new JComboBox();
+		pLeftBottom.add(cbbProInfo);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("굴림", Font.BOLD, 15));
-		textField.setBackground(Color.ORANGE);
-		pLeftBottom.add(textField);
-		textField.setColumns(10);
+		tfSelect = new JTextField();
+		tfSelect.setHorizontalAlignment(SwingConstants.CENTER);
+		tfSelect.setFont(new Font("굴림", Font.BOLD, 15));
+		tfSelect.setBackground(Color.ORANGE);
+		pLeftBottom.add(tfSelect);
+		tfSelect.setColumns(10);
 		
 		JPanel pRight = new JPanel();
 		pRight.setBackground(Color.ORANGE);
@@ -66,10 +69,19 @@ public class pTopProduct extends JPanel {
 		button.setForeground(Color.WHITE);
 		pRight.add(button);
 		
-		JButton btnNewButton = new JButton("\uCD08\uAE30\uD654");
+		btnNewButton = new JButton("초기화");
+		btnNewButton.addActionListener(this);
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(Color.BLACK);
 		pRight.add(btnNewButton);
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnNewButton) {
+			btnNewButtonActionPerformed(e);
+		}
+	}
+	protected void btnNewButtonActionPerformed(ActionEvent e) {
+		tfSelect.setText("");
+	}
 }

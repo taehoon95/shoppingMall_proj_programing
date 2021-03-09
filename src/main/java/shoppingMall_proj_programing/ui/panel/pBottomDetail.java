@@ -33,7 +33,7 @@ public class pBottomDetail extends JPanel {
 		add(tfTotalOrder);
 		tfTotalOrder.setColumns(10);
 		
-		JLabel lblSales = new JLabel("\uCD1D \uC8FC\uBB38 \uC218\uB7C9 : ");
+		JLabel lblSales = new JLabel("\uCD1D \uC8FC\uBB38\uC218\uB7C9 : ");
 		lblSales.setOpaque(true);
 		lblSales.setBackground(Color.ORANGE);
 		lblSales.setFont(new Font("굴림", Font.BOLD, 15));

@@ -20,6 +20,7 @@ public class saleDaoTest {
 
 	@Test
 	public void testSelectMain() {
+		System.out.println("testSelectMain");
 		List<sale> list = dao.selectMain();
 		Assert.assertNotNull(list);
 		for(sale a : list) {
@@ -29,6 +30,7 @@ public class saleDaoTest {
 
 	@Test
 	public void testSelectProduct() {
+		System.out.println("testSelectProduct");
 		List<sale> list = dao.selectProduct();
 		Assert.assertNotNull(list);
 		for(sale s : list) {
@@ -38,6 +40,7 @@ public class saleDaoTest {
 
 	@Test
 	public void testDetailInfo() {
+		System.out.println("testDetailInfo");
 		List<sale> list = dao.selectDetailInfo();
 		Assert.assertNotNull(list);
 		for(sale s : list) {
