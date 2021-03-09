@@ -14,23 +14,44 @@ import shoppingMall_proj_programing.dto.sale;
 
 public class pMidMain extends JPanel {
 	private JTable tableMain;
+	private JScrollPane scrollPane;
+
+	public JTable getTableMain() {
+		return tableMain;
+	}
+
+	public void setTableMain(JTable tableMain) {
+		this.tableMain = tableMain;
+	}
+
 	public pMidMain() {
 		initialize();
+		tableMain.setModel(getModel());
 	}
+
 	private void initialize() {
 		setBackground(Color.ORANGE);
 		setBounds(175, 175, 850, 230);
 		setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JScrollPane scrollPane = new JScrollPane();
+
+		scrollPane = new JScrollPane();
 		scrollPane.setBackground(Color.ORANGE);
 		add(scrollPane);
-		
+
 		tableMain = new JTable();
 		tableMain.setBackground(new Color(255, 200, 0));
-		tableMain.setModel(getModel());
 		scrollPane.setViewportView(tableMain);
 	}
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+
 	public DefaultTableModel getModel() {
 		return new DefaultTableModel(
 			getData(),
@@ -61,5 +82,4 @@ public class pMidMain extends JPanel {
 			"날짜", "회원번호", "회원명", "휴대 전화", "제품코드", "주문 수량", "판매액"
 		};
 	}
-
 }

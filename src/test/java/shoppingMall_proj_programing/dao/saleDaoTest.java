@@ -48,4 +48,14 @@ public class saleDaoTest {
 		}
 	}
 
+	@Test
+	public void testSelectByDate() {
+		System.out.println("testDate");
+		sale sale = new sale("2012.03.24");
+		List<sale> list = dao.selectMainByDate(sale);
+		Assert.assertNotNull(list);
+		for(sale s : list) {
+			System.out.println(s);
+		}
+	}
 }

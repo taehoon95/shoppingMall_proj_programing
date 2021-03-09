@@ -19,6 +19,9 @@ select date_format(date, "%Y.%m.%d") as date
 drop view vw_main;
 select * from vw_main;
 select date,cusNo,cusName,callNo,procode,saleamount,sales from vw_main;
+
+-- Main 화면에서 날짜별 조회
+select * from vw_main where date = '2012.03.24';
 -- 제품별 조회
 create view vw_product
 as

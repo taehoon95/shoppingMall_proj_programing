@@ -9,10 +9,6 @@ public class sale {
 	private int sales;
 	private int profit;
 
-	
-	
-
-
 	public sale(String date, customer cusno, product procode, int saleamount, int sales, int profit) {
 		this.date = date;
 		this.cusno = cusno;
@@ -29,7 +25,11 @@ public class sale {
 		this.procode = procode;
 		this.saleamount = saleamount;
 	}
-
+	
+	public sale(String date) { // 날짜별 조회 메인문에서 사용
+		this.date = date;
+	}
+	
 	public sale() {
 	}
 

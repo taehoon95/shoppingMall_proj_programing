@@ -8,4 +8,5 @@ public interface saleDao {
 	List<sale> selectMain();
 	List<sale> selectProduct();
 	List<sale> selectDetailInfo();
+	List<sale> selectMainByDate(sale sale);
 }

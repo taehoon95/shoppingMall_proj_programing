@@ -49,6 +49,28 @@ public class saleDaoImpl implements saleDao {
 		return new sale(date, cusno, procode, saleamount, sales, profit);
 	}
 	
+
+	@Override
+	public List<sale> selectMainByDate(sale sale) {
+		String sql = "select date,cusNo,cusName,callNo,procode,saleamount,sales from vw_main where date = ?";
+		try(Connection con = JdbcUtil.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, sale.getDate());
+			try(ResultSet rs = pstmt.executeQuery()){
+				ArrayList<sale> list = new ArrayList<sale>();
+				if(rs.next()) {
+					do {
+						list.add(getSale(rs));
+					}while(rs.next());
+					return list;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@Override
 	public List<sale> selectMain() {
 		String sql = "select date,cusNo,cusName,callNo,procode,saleamount,sales from vw_main";
@@ -106,5 +128,6 @@ public class saleDaoImpl implements saleDao {
 		}
 		return null;
 	}
+
 
 }
