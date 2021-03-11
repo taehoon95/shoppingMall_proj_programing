@@ -101,13 +101,13 @@ public class pBottomMain extends JPanel {
 		add(tfTotalSales);
 	}
 
-	private void setDataTfTotalOrder() {
+	private void setDataTfTotalOrder() { // 총 주문 수량
 		List<sale> saleList = saleDaoImpl.getInstance().selectMain();
 		int totalOrder = saleList.parallelStream().mapToInt(sale::getSaleamount).sum();
 		tfTotalOrder.setText(totalOrder + "");
 	}
 
-	private void setDataTfTotalSales() {
+	private void setDataTfTotalSales() { // 총 판매량
 		List<sale> saleList = saleDaoImpl.getInstance().selectMain();
 		int totalSales = saleList.parallelStream().mapToInt(sale::getSales).sum();
 		tfTotalSales.setText(df.format(totalSales));

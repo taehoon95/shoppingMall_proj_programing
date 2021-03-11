@@ -1,4 +1,4 @@
-package shoppingMall_proj_programing.ui.panel;
+package shoppingMall_proj_programing.ui.Abstractpanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -42,7 +42,7 @@ public abstract class AbstractCustomTablePanel<T> extends JPanel {
 		return new Object[][] {};
 	}
 
-	public void setList(List<T> list) { //list 넘겨 방아서 Object2차배열 생성하고 그 길이 만큼 돌리면서 테이블 생성
+	public void setList(List<T> list) { //list 넘겨 받아서 Object2차배열 생성하고 그 길이 만큼 돌리면서 테이블 생성
 		Object[][] data = new Object[list.size()][];
 		for (int i = 0; i < data.length; i++) {
 			data[i] = toArray(list.get(i));
